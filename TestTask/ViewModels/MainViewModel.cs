@@ -7,22 +7,25 @@ namespace TestTask.ViewModels
     public class MainViewModel : ViewModelBase
     {
         readonly IDataModel _dataModel;
+        readonly IExporter _exporter;
 
         public MainViewModel()
         {
             _dataModel = new DataModel();
         }
 
-        public MainViewModel(IDataModel dataModel)
+        public MainViewModel(IDataModel dataModel, IExporter exporter)
         {
             _dataModel = dataModel;
             _dataModel.PropertyChanged += (s, e) => { RaisePropertyChanged(e.PropertyName); };
+
+            _exporter = exporter;
 
             ExportToCsv = new DelegateCommand<string>(str =>
             {
                 if (MySelectedValues != null)
                 {
-                    _dataModel.ExportToCsv(MySelectedValues);
+                    _exporter.ExportToCsv(MySelectedValues);
                 }
             });
 
@@ -30,7 +33,7 @@ namespace TestTask.ViewModels
             {
                 if (MySelectedValues != null)
                 {
-                    _dataModel.ExportToTxt(MySelectedValues);
+                    _exporter.ExportToTxt(MySelectedValues);
                 }
             });
         }

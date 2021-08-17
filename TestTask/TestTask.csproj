@@ -94,7 +94,9 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="Models\DataModel.cs" />
+    <Compile Include="Models\Exporter.cs" />
     <Compile Include="Models\IDataModel.cs" />
+    <Compile Include="Models\IExporter.cs" />
     <Compile Include="Models\ISourceData.cs" />
     <Compile Include="Models\SourceData.cs" />
     <Compile Include="Models\TableModel.cs" />

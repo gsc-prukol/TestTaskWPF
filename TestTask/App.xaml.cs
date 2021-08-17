@@ -24,6 +24,7 @@ namespace TestTask
             _container = new TinyIoCContainer();
             _container.Register<ISourceData, SourceData>();
             _container.Register<IDataModel, DataModel>();
+            _container.Register<IExporter, Exporter>();
 
             var viewModel = _container.Resolve<MainViewModel>();
 
